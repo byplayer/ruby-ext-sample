@@ -5,8 +5,16 @@
 #define RSTRING_PTR(v) RSTRING(v)->ptr
 #endif
 
+namespace {
+  VALUE t_make_hash() {
+    VALUE h = rb_hash_new();
+    return h;
+  }
+}
+
 extern "C" {
 void Init_hash_sample() {
-  VALUE m_hs = rb_define_module("HashSample");
+  VALUE c_hs = rb_define_class("HashSample", rb_cObject);
+  rb_define_method(c_hs, "make_hash", (VALUE (*)(...))t_make_hash, 0);
 }
 }
