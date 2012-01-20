@@ -13,8 +13,12 @@ namespace {
 
   VALUE hs_is_hash_val_nil(VALUE self, VALUE h, VALUE key) {
     Check_Type(h, T_HASH);
-    // VALUE val = rb_hash_aref();
-    return h;
+    VALUE val = rb_hash_aref(h, key);
+    if(NIL_P(val)) {
+      return Qfalse;
+    } else {
+      return Qtrue;
+    }
   }
 }
 
