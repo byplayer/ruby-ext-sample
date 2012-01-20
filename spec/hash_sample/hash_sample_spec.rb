@@ -21,9 +21,10 @@ describe HashSample do
       }
 
       hs = HashSample.new
-      puts hs.hash_val_nil?(h, "test").inspect
-      # hs.hash_val_nil?(h, "test").should be_true
-      # hs.hash_val_nil?(h, :sym_key).should be_true
+      hs.hash_val_nil?(h, "test").should be_true
+      hs.hash_val_nil?(h, :sym_key).should be_true
+
+      hs.hash_val_nil?(h, "test2").should be_false
     }
   end
 end
