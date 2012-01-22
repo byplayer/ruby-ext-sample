@@ -25,6 +25,26 @@ describe HashSample do
       hs.hash_val_nil?(h, :sym_key).should be_true
 
       hs.hash_val_nil?(h, "test2").should be_false
+
+      hs.has_test_sym?(h).should be_false
+    }
+
+    it {
+      h = {
+        "test" => "value",
+        :sym_key => "sym_val",
+      }
+      hs = HashSample.new
+      hs.has_test_sym?(h).should be_false
+    }
+
+    it {
+      h = {
+        :test => "value",
+        :sym_key => "sym_val",
+      }
+      hs = HashSample.new
+      hs.has_test_sym?(h).should be_true
     }
   end
 end
