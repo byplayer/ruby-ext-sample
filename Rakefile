@@ -37,7 +37,6 @@ Rake::RDocTask.new("doc") { |rdoc|
   rdoc.title = "ROMA documents"
   rdoc.options.concat RDOC_OPTIONS
   rdoc.rdoc_files.include('lib/**/*.rb')
-  rdoc.rdoc_files.include("README")
-  rdoc.rdoc_files.include("CHANGELOG")
+  rdoc.rdoc_files.include('lib/**/*.cc')
 }
 
