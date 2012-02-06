@@ -1,4 +1,5 @@
 /.bundle
 /ext/Makefile
+/doc
 *.o
 *.so
