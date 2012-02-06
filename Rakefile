@@ -38,5 +38,6 @@ Rake::RDocTask.new("doc") { |rdoc|
   rdoc.options.concat RDOC_OPTIONS
   rdoc.rdoc_files.include('lib/**/*.rb')
   rdoc.rdoc_files.include('lib/**/*.cc')
+  rdoc.rdoc_files.include('lib/**/*.c')
 }
 
