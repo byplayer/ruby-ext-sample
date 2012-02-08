@@ -21,6 +21,9 @@ namespace {
     }
   }
 
+  /*
+   * test of using symbol in hash key
+   */
   VALUE hs_has_test_sym(VALUE self, VALUE h) {
     Check_Type(h, T_HASH);
     VALUE val = rb_hash_aref(h, ID2SYM(rb_intern("test")));
@@ -33,10 +36,17 @@ namespace {
 }
 
 extern "C" {
-void Init_hash_sample() {
-  VALUE c_hs = rb_define_class("HashSample", rb_cObject);
-  rb_define_method(c_hs, "make_hash", (VALUE (*)(...))hs_make_hash, 0);
-  rb_define_method(c_hs, "hash_val_nil?", (VALUE (*)(...))hs_is_hash_val_nil, 2);
-  rb_define_method(c_hs, "has_test_sym?", (VALUE (*)(...))hs_has_test_sym, 1);
-}
+
+  /*
+   * Document-class: HashSample
+   *
+   * Hash extention sample
+   */
+  void Init_hash_sample(void)
+  {
+    VALUE c_hs = rb_define_class("HashSample", rb_cObject);
+    rb_define_method(c_hs, "make_hash", RUBY_METHOD_FUNC(hs_make_hash), 0);
+    rb_define_method(c_hs, "hash_val_nil?", RUBY_METHOD_FUNC(hs_is_hash_val_nil), 2);
+    rb_define_method(c_hs, "has_test_sym?", RUBY_METHOD_FUNC(hs_has_test_sym), 1);
+  }
 }
